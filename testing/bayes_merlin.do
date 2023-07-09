@@ -33,8 +33,8 @@ stmerlin trt age , dist(rcs) df(3)
 timer off 1
 
 timer on 2
-morgana : merlin (_t trt age , family(rp, failure(_d) df(3)))
-morgana: stmerlin trt age , dist(rcs) df(3)
+// morgana : merlin (_t trt age , family(rp, failure(_d) df(3)))
+morgana: stmerlin trt age , dist(rp) df(3)
 timer off 2
 
 timer list
