@@ -44,6 +44,37 @@ program morgana, eclass
 	//global opts
 	global object `e(object)'
 	
+	// extract any prior() statements from bayesopts
+	local 0 , `bayesopts'
+	syntax , [PRIOR(string) *]
+	if "`prior'"!="" {
+		local 0 `prior'
+		syntax anything [, *] 
+		if `: list sizeof anything'>1 {
+			di as error "{p}prior(`prior') not supported; " ///
+				"you can only specify one variable name" ///
+				"at a time{p_end}"
+			exit 198
+		}
+		local priorpriors `anything'
+	}
+	while "`prior'"!="" {
+		local 0 , `options'
+		syntax , [PRIOR(string) *]
+		if "`prior'"!="" {
+			local 0 `prior'
+			syntax anything [, *] 
+			if `: list sizeof anything'>1 {
+				di as error "{p}prior(`prior') not supported; " ///
+					"you can only specify one variable name" ///
+					"at a time{p_end}"
+				exit 198
+			}
+			local priorpriors `priorpriors' `anything'
+		}			
+	}
+	
+
 	//hard coded for 1 model 
 
 	local i = 1
@@ -57,8 +88,10 @@ program morgana, eclass
 		if `cmpj'==1 {			
 			local eqns `eqns' `var'
 			local params `params' {`var'}
-			local priors `priors' ///
-				prior({`var'}, normal(0,10000))
+			if !strpos("`priorpriors'","{`var'}") {
+				local priors `priors' ///
+					prior({`var'}, normal(0,10000))
+			}
 			local block`i' `block`i'' {`var'}
 		}			
 		else {
@@ -66,9 +99,11 @@ program morgana, eclass
 			forvalues j=1/`cmpj' {
 				local eqns `eqns' `var'`j'
 				local params `params' {`var'`j'}
-				local priors `priors' ///
-					prior({`var'`j'}, ///
-					normal(0,10000))
+				if !strpos("`priorpriors'","{`var'}") {
+					local priors `priors' ///
+						prior({`var'`j'}, ///
+						normal(0,10000))
+				}
 				local block`i' `block`i'' {`var'`j'}
 			}
 		}
@@ -78,8 +113,10 @@ program morgana, eclass
 	if `e(constant`i')'==1 {
 		local eqns `eqns' _cons`i'
 		local params `params' {_cons`i'}
-		local priors `priors' ///
-			prior({_cons`i'}, normal(0,10000))
+		if !strpos("`priorpriors'","{`var'}") {
+			local priors `priors' ///
+				prior({_cons`i'}, normal(0,10000))
+		}
 		local block`i' `block`i'' {_cons`i'}
 	}
 	local blocks `blocks' block(`block`i'')
@@ -98,10 +135,11 @@ program morgana, eclass
 					local params `params' ///
 						{_rcs_`i'_`dap'}
 				}
-				
-				local priors `priors' ///
-					prior({_rcs_`i'_`dap'}, ///
-					normal(0,10000))
+				if !strpos("`priorpriors'","{`var'}") {
+					local priors `priors' ///
+						prior({_rcs_`i'_`dap'}, ///
+						normal(0,10000))
+				}
 				local block`i' `block`i'' ///
 					{_rcs_`i'_`dap'}
 			}	
@@ -115,8 +153,10 @@ program morgana, eclass
 		forvalues ap = 1/`e(nap`i')' {
 			local eqns `eqns' mod`i'_ap`ap'
 			local params `params' {mod`i'_ap`ap'}
-			local priors `priors' ///
-				prior({mod`i'_ap`ap'}, normal(0,10000))
+			if !strpos("`priorpriors'","{`var'}") {
+				local priors `priors' ///
+					prior({mod`i'_ap`ap'}, normal(0,10000))
+			}
 		}
 	}
 

@@ -34,7 +34,7 @@ timer off 1
 
 timer on 2
 // morgana : merlin (_t trt age , family(rp, failure(_d) df(3)))
-morgana, test: stmerlin trt age , dist(cox)
+morgana, prior({age}, normal(0,1)): stmerlin trt age , dist(rp) df(1)
 timer off 2
 
 timer list

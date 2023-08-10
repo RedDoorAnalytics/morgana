@@ -41,7 +41,7 @@ user-defined outcomes. For full details and many tutorials, take a look at the a
 {p_end}
 
 
-{title:Example}
+{title:Examples}
 
 {phang}Setup{p_end}
 {phang}{cmd:. webuse brcancer, clear}{p_end}
@@ -53,13 +53,16 @@ user-defined outcomes. For full details and many tutorials, take a look at the a
 {phang}Specify an informative prior on the {cmd:hormon} coefficient:{p_end}
 {phang}{cmd:. morgana, prior({hormon}, normal(0.3,0.03)) : stmerlin hormon , dist(rp) df(3)}{p_end}
 
+{phang}Use the {cmd:dryrun} option to check equation names for specifying priors:{p_end}
+{phang}{cmd:. morgana , dryrun : stmerlin hormon , dist(rp) df(3)}{p_end}
+
 
 {title:Author}
 
 {p 5 12 2}
 {bf:Michael J. Crowther}{p_end}
 {p 5 12 2}
-Red Door Analytics AB{p_end}
+Red Door Analytics{p_end}
 {p 5 12 2}
 Stockholm, Sweden{p_end}
 {p 5 12 2}
