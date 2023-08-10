@@ -13,7 +13,7 @@ local drive /Users/Michael/My Drive/products/morgana
 adopath ++ "`drive'/morgana"
 
 pr drop _all
-
+ 
 set seed 72549
 clear
 set obs 1000
@@ -34,7 +34,7 @@ timer off 1
 
 timer on 2
 // morgana : merlin (_t trt age , family(rp, failure(_d) df(3)))
-morgana: stmerlin trt age , dist(rp) df(3)
+morgana, test: stmerlin trt age , dist(cox)
 timer off 2
 
 timer list

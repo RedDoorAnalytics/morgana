@@ -14,13 +14,13 @@ dev notes
 
 */
 
-program morgana
+program morgana, eclass
 	version 18
 	
 	gettoken colon merlin : 0 , parse(":")
 
 	if "`colon'"!=":" {
-		gettoken comma opts : colon , parse(",")	
+		gettoken comma bayesopts : colon , parse(",")	
 		gettoken colon merlin : merlin, parse(":")
 		
 		if "`colon'"!=":" {
@@ -128,9 +128,12 @@ program morgana
 		`priors'					///
 		`blocks'					///
 		title(Bayesian survival regression)		///
-		`opts'
+		`bayesopts'
 	
-	mata: merlin_cleanup(st_global("object"))
+	capture n mata: merlin_cleanup(st_global("object"))
+	capture drop {$object}*
+	capture mata: mata drop chazf hazf loglf
+
 	if _rc>0 {
 		exit `rc'
 	}
