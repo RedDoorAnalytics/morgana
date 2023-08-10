@@ -15,16 +15,7 @@
 {title:Syntax}
 
 {p 8 12 2}
-{cmd:morgana} [, {it:options}] {cmd::} {it:stmerlin_model}
-
-
-{synoptset 27}{...}
-{marker options}{...}
-{synopthdr:options}
-{synoptline}
-{synopt :{opt nomodelsummary}}{p_end}
-{synoptline}
-{p2colreset}{...}
+{cmd:morgana} [, {help bayesmh##options_table:{it:bayesmh_options}}] {cmd::} {it:stmerlin_model}
 
 
 {marker description}{...}
@@ -43,23 +34,24 @@ syntax. Time-dependent effects can be specified using restricted cubic splines.
 {pstd}
 The {helpb merlin} command fits an extremely broad class of mixed effects regression models for linear, non-linear and 
 user-defined outcomes. For full details and many tutorials, take a look at the accompanying website: 
-{browse "https://reddooranalytics.se/products/merlin":reddooranalytics.se/products/merlin}
 {p_end}
 
-
-{marker options}{...}
-{title:Options}
-
-{phang}{opt nomodelsummarry} 
+{phang2}
+{browse "https://reddooranalytics.se/products/merlin":{bf:reddooranalytics.se/products/merlin}}
+{p_end}
 
 
 {title:Example}
 
 {phang}Setup{p_end}
 {phang}{cmd:. webuse brcancer, clear}{p_end}
+{phang}{cmd:. stset rectime, failure(censrec)}{p_end}
 
 {phang}Estimate a Bayesian flexible parametric Royston-Parmar model:{p_end}
 {phang}{cmd:. morgana : stmerlin hormon , dist(rp) df(3)}{p_end}
+
+{phang}Specify an informative prior on the {cmd:hormon} coefficient:{p_end}
+{phang}{cmd:. morgana, prior({hormon}, normal(0.3,0.03)) : stmerlin hormon , dist(rp) df(3)}{p_end}
 
 
 {title:Author}
