@@ -34,7 +34,9 @@ timer off 1
 
 timer on 2
 // morgana : merlin (_t trt age , family(rp, failure(_d) df(3)))
-morgana, prior({age}, normal(0,1)): stmerlin trt age , dist(rp) df(1)
+morgana, prior({trt}, normal(-0.2,0.1)): stmerlin trt age , dist(rp) df(3)
 timer off 2
 
 timer list
+
+bayesgraph diagnostics _all
