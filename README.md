@@ -12,4 +12,4 @@ net install morgana, from("https://raw.githubusercontent.com/RedDoorAnalytics/mo
 
 ### Requirements
 
-You must also install the `merlin` and `stmerlin packages
+You must also install the [`merlin`](https://github.com/RedDoorAnalytics/merlin) and [`stmerlin`](https://github.com/RedDoorAnalytics/stmerlin) packages
