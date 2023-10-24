@@ -1,0 +1,8 @@
+v 3
+d morgana: Bayesian flexible parametric survival analysis
+d Author: Michael J. Crowther
+d Distribution-Date: 20231025
+f morgana/morgana.ado
+f morgana/morgana_ll.ado
+f morgana/morgana.sthlp
+e

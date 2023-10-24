@@ -1,0 +1,3 @@
+v 3
+d Stata package for Bayesian flexible parametric survival analysis
+p morgana

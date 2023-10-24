@@ -17,29 +17,29 @@ dev notes
 program morgana, eclass
 	version 18
 	
-	gettoken colon merlin : 0 , parse(":")
+	gettoken colon stmerlin : 0 , parse(":")
 
 	if "`colon'"!=":" {
 		gettoken comma bayesopts : colon , parse(",")	
-		gettoken colon merlin : merlin, parse(":")
+		gettoken colon stmerlin : stmerlin, parse(":")
 		
 		if "`colon'"!=":" {
 			di as error "{p}morgana is a prefix command " ///
-				"and requires a :{p_end}"
+				"and requires a {bf::}{p_end}"
 			exit 198
 		}
 	}
 
 	set prefix morgana
 	
-	if "`: word 1 of `merlin''"!="stmerlin" {
+	if "`: word 1 of `stmerlin''"!="stmerlin" {
 		di as error "{p}{bf:morgana} currently only supports " ///
 			"use with {bf:stmerlin}{p_end}"
 		exit 198
 	}
 	
 	//fill up struct and bail out before estimation
-	`merlin'
+	`stmerlin'
 
 	//global opts
 	global object `e(object)'
@@ -169,11 +169,11 @@ program morgana, eclass
 		`blocks'					///
 		title(Bayesian survival regression)		///
 		`bayesopts'
-	
+
 	capture n mata: merlin_cleanup(st_global("object"))
 	capture drop {$object}*
 	capture mata: mata drop chazf hazf loglf
-
+	
 	if _rc>0 {
 		exit `rc'
 	}
