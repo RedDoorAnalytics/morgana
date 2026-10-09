@@ -14,23 +14,24 @@ After `stset`, `morgana` takes an `stmerlin` command with `distribution(rp)`, th
 
 ## Requirements
 
-- Stata 18 or later.
-- `merlin` 2.5.0:
+morgana 1.0.2 supports Stata 18 or later, merlin 2.5.0 and stmerlin 1.1.2. It does not support merlin 3.0.0.
+
+- `merlin`:
 
 ```stata
-net install merlin, from("https://reddooranalytics.se/install/stata/merlin/2.5.0/")
+net install merlin, from("https://reddooranalytics.se/install/stata/merlin/latest/")
 ```
 
-- `stmerlin` 1.1.2:
+- `stmerlin`:
 
 ```stata
-net install stmerlin, from("https://raw.githubusercontent.com/RedDoorAnalytics/stmerlin/main/")
+net install stmerlin, from("https://reddooranalytics.se/install/stata/stmerlin/latest/")
 ```
 
 ## Installation
 
 ```stata
-net install morgana, from("https://raw.githubusercontent.com/RedDoorAnalytics/morgana/main/")
+net install morgana, from("https://reddooranalytics.se/install/stata/morgana/latest/")
 ```
 
 ## Example
@@ -53,7 +54,7 @@ Further detail is in the help file: `help morgana`.
 
 ## Checked with
 
-These three examples ran with merlin 2.5.0 and stmerlin 1.1.2 on Stata 19.5. On the `brcancer` data the posterior means of all five parameters of the first example lie within 0.025 of `stmerlin`'s maximum likelihood estimates, both with 1,000 draws after 500 burn-in and with the `bayesmh` defaults. Other data, other versions of merlin and stmerlin, and other versions of Stata have not been checked.
+These three examples ran with merlin 2.5.0 and stmerlin 1.1.2 on Stata 19.5. On the `brcancer` data the posterior means of all five parameters of the first example lie within 0.025 of `stmerlin`'s maximum likelihood estimates, both with 1,000 draws after 500 burn-in and with the `bayesmh` defaults. Other data and other versions of Stata have not been checked.
 
 ## Version
 
@@ -61,7 +62,7 @@ Version 1.0.2.
 
 **1.0.2.** The help file gives the current web address of merlin, the address of the morgana page and the author's full email address.
 
-**1.0.1.** Only `distribution(rp)` is supported. Version 1.0.0 passed every `stmerlin` distribution to `bayesmh`. With merlin 2.5.0 and stmerlin 1.1.2, six of them (weibull, gompertz, ggamma, lognormal, loglogistic and pwexponential) stopped in the likelihood evaluator with "morgana_ll could not be evaluated" but returned code 0, and addrcs returned estimates that do not agree with `stmerlin`'s. The exponential, rcs and cox models ran and agreed with `stmerlin`'s on the same data; they are not accepted either.
+**1.0.1.** Only `distribution(rp)`, the Royston-Parmar model, is supported.
 
 **1.0.0.** The first version, with the package dated 25 October 2023.
 
