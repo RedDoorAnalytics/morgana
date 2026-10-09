@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.0}{...}
+{* *! version 1.0.2}{...}
 {vieweralsosee "morgana" "help morgana"}{...}
 {vieweralsosee "stmerlin" "help stmerlin"}{...}
 {vieweralsosee "merlin" "help merlin"}{...}
@@ -30,6 +30,10 @@ Only the Royston-Parmar model, {cmd:distribution(rp)}, is supported. Any other {
 {p_end}
 
 {pstd}
+More about morgana: {browse "https://reddooranalytics.se/software/morgana/":{bf:reddooranalytics.se/software/morgana}}
+{p_end}
+
+{pstd}
 {cmd:stmerlin} fits survival models, including a range of parametric distributions, flexible spline-based models, and the 
 Cox model. It is a convenience wrapper of the more powerful {helpb merlin} command, but with a much more user-friendly 
 syntax. Time-dependent effects can be specified using restricted cubic splines.
@@ -41,7 +45,7 @@ user-defined outcomes. For full details and many tutorials, take a look at the a
 {p_end}
 
 {phang2}
-{browse "https://reddooranalytics.se/products/merlin":{bf:reddooranalytics.se/products/merlin}}
+{browse "https://reddooranalytics.se/software/merlin/":{bf:reddooranalytics.se/software/merlin}}
 {p_end}
 
 
@@ -70,5 +74,5 @@ Red Door Analytics{p_end}
 {p 5 12 2}
 Stockholm, Sweden{p_end}
 {p 5 12 2}
-michael@reddooranalytics.se{p_end}
+michael.crowther@reddooranalytics.se{p_end}
 

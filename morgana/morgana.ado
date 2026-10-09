@@ -1,4 +1,4 @@
-*! version 1.0.1  9oct2026
+*! version 1.0.2  10oct2026
 
 /*
 dev notes

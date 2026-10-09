@@ -57,7 +57,9 @@ These three examples ran with merlin 2.5.0 and stmerlin 1.1.2 on Stata 19.5. On 
 
 ## Version
 
-Version 1.0.1.
+Version 1.0.2.
+
+**1.0.2.** The help file gives the current web address of merlin, the address of the morgana page and the author's full email address.
 
 **1.0.1.** Only `distribution(rp)` is supported. Version 1.0.0 passed every `stmerlin` distribution to `bayesmh`. With merlin 2.5.0 and stmerlin 1.1.2, six of them (weibull, gompertz, ggamma, lognormal, loglogistic and pwexponential) stopped in the likelihood evaluator with "morgana_ll could not be evaluated" but returned code 0, and addrcs returned estimates that do not agree with `stmerlin`'s. The exponential, rcs and cox models ran and agreed with `stmerlin`'s on the same data; they are not accepted either.
 
