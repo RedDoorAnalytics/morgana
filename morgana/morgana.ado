@@ -1,4 +1,4 @@
-*! version 1.0.0 ?????2023
+*! version 1.0.1  9oct2026
 
 /*
 dev notes
@@ -38,12 +38,28 @@ program morgana, eclass
 		exit 198
 	}
 	
+	quietly ds
+	local varsbefore `r(varlist)'
+
 	//fill up struct and bail out before estimation
 	`stmerlin'
 
 	//global opts
 	global object `e(object)'
 	
+	//only the Royston-Parmar model is supported
+	if "`e(family1)'"!="rp" {
+		capture n mata: merlin_cleanup(st_global("object"))
+		capture mata: mata drop chazf hazf loglf
+		quietly ds
+		local varsafter `r(varlist)'
+		local varsmade : list varsafter - varsbefore
+		capture drop `varsmade'
+		di as error "{p}{bf:morgana} currently only supports " ///
+			"{bf:distribution(rp)} with {bf:stmerlin}{p_end}"
+		exit 198
+	}
+
 	// extract any prior() statements from bayesopts
 	local 0 , `bayesopts'
 	syntax , [PRIOR(string) *]

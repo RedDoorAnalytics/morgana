@@ -7,7 +7,7 @@
 {title:Title}
 
 {p2colset 5 16 18 2}{...}
-{p2col:{helpb morgana} {hline 2}}prefix commmand for estimating a Bayesian {helpb stmerlin} survival model{p_end}
+{p2col:{helpb morgana} {hline 2}}prefix command for estimating a Bayesian {helpb stmerlin} survival model{p_end}
 {p2colreset}{...}
 
 
@@ -22,7 +22,11 @@
 {title:Description}
 
 {pstd}
-The {cmd:morgana} prefix commmand fits Bayesian versions of survival models available with the {helpb stmerlin} command.
+The {cmd:morgana} prefix command fits Bayesian versions of survival models available with the {helpb stmerlin} command.
+{p_end}
+
+{pstd}
+Only the Royston-Parmar model, {cmd:distribution(rp)}, is supported. Any other {cmd:stmerlin} distribution stops with an error.
 {p_end}
 
 {pstd}
